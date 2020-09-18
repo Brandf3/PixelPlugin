@@ -1,6 +1,9 @@
 package com.gmail.brandf3.testproject.commands;
 
 import java.util.Optional;
+import com.pixelmongenerations.common.entity.pixelmon.EntityPixelmon;
+import com.pixelmongenerations.core.storage.PixelmonStorage;
+import com.pixelmongenerations.core.storage.PlayerStorage;
 
 import org.spongepowered.api.Sponge;
 import org.spongepowered.api.command.CommandException;
@@ -19,17 +22,22 @@ import org.spongepowered.api.text.Text;
 import org.spongepowered.api.world.Location;
 import org.spongepowered.api.world.World;
 
-import com.pixelmongenerations.common.entity.pixelmon.EntityPixelmon;
-import com.pixelmongenerations.core.storage.PixelmonStorage;
-import com.pixelmongenerations.core.storage.PlayerStorage;
-
-public class TestProjectExecutor implements CommandExecutor{
+public class PixelmonCommand implements CommandExecutor{
 
 	@Override
 	public CommandResult execute(CommandSource src, CommandContext args) throws CommandException {
 		
 		if (src instanceof Player) {
 			Player player = (Player) src;
+			
+			PlayerStorage party = PixelmonStorage.pokeBallManager.getPlayerStorageFromUUID(player.getUniqueId()).get();
+			
+			src.sendMessage(Text.of("Average party level: " + party.getAveragePartyLevel()));
+			//World world = player.getWorld();
+			//int[] x = party.getIDFromPosition(0);
+			//party.getPokemon(x, world);
+			
+			//EntityPixelmon pokemon = party.getPokemon(party.getIDFromPosition(1), world);
 			
 			//src.sendMessage(Text.of("Hello, " + player.getName()));
 			String name = args.<String>getOne("entity").get();

@@ -35,7 +35,20 @@ public class TestProject {
 				.executor(new TestProjectExecutor())
 				.build();
 		
+		CommandSpec otChange = CommandSpec.builder()
+				.description(Text.of("Change the OT of the given pokemon."))
+				.executor(new PixelmonCommand())
+				.build();
+		
+		CommandSpec PCSee = CommandSpec.builder()
+				.description(Text.of("View another player's pc."))
+				.arguments(GenericArguments.onlyOne(GenericArguments.string(Text.of("player"))))
+				.executor(new PC())
+				.build();
+		
 		Sponge.getCommandManager().register(this, testCommand, "reverseMount");
+		Sponge.getCommandManager().register(this, otChange, "changeot");
+		Sponge.getCommandManager().register(this, PCSee, "pcsee");
 		
 		logger.info("Successfully running TestProject.");
 	}

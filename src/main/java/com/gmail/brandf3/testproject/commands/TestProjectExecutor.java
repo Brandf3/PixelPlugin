@@ -19,10 +19,6 @@ import org.spongepowered.api.text.Text;
 import org.spongepowered.api.world.Location;
 import org.spongepowered.api.world.World;
 
-import com.pixelmongenerations.common.entity.pixelmon.EntityPixelmon;
-import com.pixelmongenerations.core.storage.PixelmonStorage;
-import com.pixelmongenerations.core.storage.PlayerStorage;
-
 public class TestProjectExecutor implements CommandExecutor{
 
 	@Override
